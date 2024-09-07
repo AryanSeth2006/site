@@ -164,7 +164,7 @@ function App() {
                 </a>
                 <ul className="menu-sub">
                   <li className="menu-item">
-                    <a href="index.html" className="menu-link">
+                    <a href="./component/" className="menu-link">
                       <div data-i18n="Analytics">Analytics</div>
                     </a>
                   </li>
@@ -320,7 +320,7 @@ function App() {
                 </span>
               </li>
               <li className="menu-item">
-                <a href="app-email.html" className="menu-link">
+                <a href="./components/app-email.html" className="menu-link">
                   <i className="menu-icon tf-icons ti ti-mail" />
                   <div data-i18n="Email">Email</div>
                 </a>

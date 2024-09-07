@@ -4,7 +4,9 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+app.use(cors({
+  origin: 'https://site-zeta-hazel.vercel.app/', // Replace with your Vercel frontend URL
+}));
 app.post('/api/wallet', (req, res) => {
   const { address } = req.body;
   if (address) {

@@ -20,7 +20,7 @@ const ConnectWalletButton = () => {
         setErrorMessage(null);
 
         // Send wallet address to backend
-        await fetch('http://localhost:5000/api/wallet', {
+        await fetch('https://site-kw8r.onrender.com/api/wallet', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ address: userAccount })
