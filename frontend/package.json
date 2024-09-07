@@ -12,6 +12,7 @@
   "dependencies": {
     "@walletconnect/web3-provider": "^1.8.0",
     "buffer": "^6.0.3",
+    "cors": "^2.8.5",
     "ethers": "^6.13.2",
     "process": "^0.11.10",
     "react": "^18.3.1",

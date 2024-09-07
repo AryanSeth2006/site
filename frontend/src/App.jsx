@@ -1,54 +1,13 @@
+"use client"
 import React, { useState } from "react";
-import { ethers } from "ethers";
-import WalletConnectProvider from "@walletconnect/web3-provider";
+
+import { createRoot } from "react-dom/client";
 
 import "./App.css";
-const providerOptions = {
-  walletconnect: {
-    package: WalletConnectProvider,
-    options: {
-      infuraId: "6fdc127e07db4729bb7b947302472aaa", // You can get an Infura ID at https://infura.io
-    },
-  },
-};
+import ConnectWalletButton from "./components/ConnectWalletButton";
+
 function App() {
-  const [provider, setProvider] = useState(null);
-  const [account, setAccount] = useState("");
-  const [balance, setBalance] = useState("");
-  const [isConnected, setIsConnected] = useState(false);
-  // Connect wallet function
-  const connectWallet = async () => {
-    try {
-      // Create a WalletConnect Provider
-      const walletConnectProvider = new WalletConnectProvider({
-        infuraId: "YOUR_INFURA_ID", // Replace with your Infura ID
-      });
-
-      // Enable session (connect)
-      await walletConnectProvider.enable();
-
-      // Create an ethers provider
-      const web3Provider = new ethers.providers.Web3Provider(
-        walletConnectProvider
-      );
-
-      // Get the user's account address
-      const signer = web3Provider.getSigner();
-      const userAccount = await signer.getAddress();
-
-      // Get user's balance
-      const userBalance = await web3Provider.getBalance(userAccount);
-      const formattedBalance = ethers.utils.formatEther(userBalance);
-
-      // Update state
-      setProvider(web3Provider);
-      setAccount(userAccount);
-      setBalance(formattedBalance);
-      setIsConnected(true);
-    } catch (error) {
-      console.error("Failed to connect wallet", error);
-    }
-  };
+ 
 
   return (
     <>
@@ -2557,23 +2516,13 @@ function App() {
                                 >
                                   <i className="ti ti-brand-twitter text-white ti-md" />
                                 </button>
+                               
                               </div>
-                              <h1>WalletConnect Integration</h1>
-                              {!isConnected ? (
-                                <button
-                                  onClick={connectWallet}
-                                  className="connect-wallet-btn"
-                                >
-                                  Connect Wallet
-                                </button>
-                              ) : (
-                                <div>
-                                  <p>Connected Wallet: {account}</p>
-                                  <p>Balance: {balance} ETH</p>
-                                </div>
-                              )}
+                              
+                             
                             </div>
                           </div>
+                          <ConnectWalletButton/>
                         </form>
                       </div>
                     </div>
